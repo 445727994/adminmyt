@@ -27,7 +27,7 @@ class MarketController extends AdminController {
 	 */
 	protected function grid() {
 		$grid = new Grid(new Market);
-
+		$grid->model()->where('cate_pid', '=', 1);
 		$grid->column('id', __('Id'));
 		$grid->column('content', __('标题'));
 		$grid->column('images', __('图片'))->image('', 100, 100);
@@ -96,13 +96,14 @@ class MarketController extends AdminController {
 				return $str;
 			}
 
-		})->help('自动获取');
+		})->help('商品自动获取');
 		$form->text('item_title', __('淘宝商品标题'))->help('自动获取')->disable();
-		$form->select('cate_id', __('分类'))->options(MarketCate::selectOption(['pid' => 4], false))->help('选择分类')->rules('required', ['required' => '请选择分类']);
+		$form->select('cate_id', __('分类'))->options(MarketCate::selectOption(['pid' => 1], false))->help('选择分类')->rules('required', ['required' => '请选择分类']);
 		//$form->number('publish_id', __('发布人'));
 		$form->select('publish_id', __('发布人'))->options(MarketUser::selectOption())->help('选择发布人')->rules('required', ['required' => '请选择发布人']);
 		//$form->number('is_jx', __('Is jx'));
 		$form->kindeditor('copy_text', __('复制文案'))->help("请勿在内容中上传图片！\$淘口令\$ 在复制时可自动替换为淘口令");
+		$form->hidden('cate_pid')->default(1);
 		$form->saving(function (Form $form) {
 			$Taobao = new Taobao();
 			$item = $Taobao->getItemInfo(['item_id' => '559419631599']);

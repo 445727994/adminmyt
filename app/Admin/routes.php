@@ -13,6 +13,7 @@ Route::group([
 	$router->get('/', 'HomeController@index')->name('admin.home');
 	$router->resource('market-cates', MarketCateController::class);
 	$router->resource('markets', MarketController::class);
+	$router->resource('markets-list', MarketListController::class);
 	$router->resource('market-users', MarketUserController::class);
 	$router->resource('frees', FreeController::class);
 	$router->resource('coupons', CouponController::class);

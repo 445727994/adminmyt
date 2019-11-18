@@ -15,7 +15,7 @@ class Market extends Model {
 	 * @var array
 	 */
 	protected $fillable = [
-		'content', 'images', 'type', 'shares', 'copy_text', 'publish_id', 'item_id', 'item_pic', 'item_title', 'cate_id', 'is_jx',
+		'content', 'images', 'type', 'shares', 'copy_text', 'publish_id', 'item_id', 'item_pic', 'item_title', 'cate_id', 'is_jx', 'cate_pid',
 	];
 
 	/**
