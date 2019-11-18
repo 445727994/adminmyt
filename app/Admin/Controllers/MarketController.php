@@ -40,8 +40,8 @@ class MarketController extends AdminController {
 		$grid->column('publish.name', __('发布人'));
 		//$grid->column('is_jx', __('Is jx'));
 		$grid->column('copy_text', __('复制文案'));
-		$grid->column('created_at', __('Created at'));
-		$grid->column('updated_at', __('Updated at'));
+		$grid->column('created_at', __('创建时间'));
+		$grid->column('updated_at', __('更新时间'));
 		return $grid;
 	}
 
@@ -58,8 +58,8 @@ class MarketController extends AdminController {
 		$show->field('content', __('标题'));
 		$show->field('images', __('图片'));
 		$show->field('shares', __('分享次数'));
-		$show->field('created_at', __('Created at'));
-		$show->field('updated_at', __('Updated at'));
+		$show->field('created_at', __('创建时间'));
+		$show->field('updated_at', __('更新时间'));
 		$show->field('type', __('Type'));
 		$show->field('item_id', __('淘宝商品ID'));
 		$show->field('item_pic', __('Item pic'));
@@ -87,12 +87,15 @@ class MarketController extends AdminController {
 		$form->text('item_id', __('淘宝商品ID'));
 
 		$form->display('item_pic', __('淘宝商品图'))->with(function ($value) {
-			$imgs = json_decode($value, true);
-			$str = '';
-			foreach ($imgs as $k => $v) {
-				$str .= "<img style='width:100px;' src='" . $v . "' />";
+			if ($value) {
+				$imgs = json_decode($value, true);
+				$str = '';
+				foreach ($imgs as $k => $v) {
+					$str .= "<img style='width:100px;' src='" . $v . "' />";
+				}
+				return $str;
 			}
-			return $str;
+
 		})->help('自动获取');
 		$form->text('item_title', __('淘宝商品标题'))->help('自动获取')->disable();
 		$form->select('cate_id', __('分类'))->options(MarketCate::selectOption(['pid' => 4], false))->help('选择分类')->rules('required', ['required' => '请选择分类']);

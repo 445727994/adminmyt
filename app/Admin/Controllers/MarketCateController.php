@@ -81,7 +81,13 @@ class MarketCateController extends AdminController {
 		$form->saving(function (Form $form) {
 			$pid = MarketCate::where('id', $form->model()->id)->value("pid");
 			if (($form->model()->pid == 0 || $form->model()->pid == NULL) && $form->id != 0) {
-				throw new \Exception('顶级分类不允许修改为二级分类');
+				throw new \Exception('');
+				$error = new MessageBag([
+					'title' => '修改失败',
+					'message' => '顶级分类不允许修改为二级分类',
+				]);
+				return back()->with(compact('error'));
+
 			}
 		});
 		$form->deleting(function (Form $form) {

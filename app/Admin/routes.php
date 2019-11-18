@@ -14,4 +14,7 @@ Route::group([
 	$router->resource('market-cates', MarketCateController::class);
 	$router->resource('markets', MarketController::class);
 	$router->resource('market-users', MarketUserController::class);
+	$router->resource('frees', FreeController::class);
+	$router->resource('coupons', CouponController::class);
+	$router->resource('free-settings', FreeSettingController::class);
 });
