@@ -28,7 +28,7 @@ class MarketCate extends Model {
 	public static function selectOption($where = [], $add = '顶级分类') {
 		$res = MarketCate::where($where)->pluck('name', 'id');
 		if ($add != '') {
-			$res = array_merge(['0' => $add], json_decode(json_encode($arr), true));
+			$res = array_merge(['0' => $add], json_decode(json_encode($res), true));
 		}
 		return $res;
 	}

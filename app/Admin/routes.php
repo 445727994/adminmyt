@@ -18,4 +18,5 @@ Route::group([
 	$router->resource('frees', FreeController::class);
 	$router->resource('coupons', CouponController::class);
 	$router->resource('free-settings', FreeSettingController::class);
+	$router->resource('markets-school', MarketsSchoolContorller::class);
 });
