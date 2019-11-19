@@ -91,9 +91,9 @@ class UserContorller extends AdminController {
 
 		$show->field('nickname', __('昵称'));
 		$show->field('phone', __('手机'));
-		$show->field('password', __('Password'));
+
 		$show->field('headimgurl', __('头像'));
-		$show->field('is_default', __('Is default'));
+
 		$show->field('credit1', __('佣金'));
 
 		$show->field('level_id', __('等级'));
@@ -115,15 +115,15 @@ class UserContorller extends AdminController {
 	 */
 	protected function form() {
 		$form = new Form(new User);
-
-		$form->number('app_id', __('App id'));
 		$form->number('inviter_id', __('邀请人'));
-		$form->number('group_id', __('上级合伙人'));
-		$form->number('edu_id', __('联创'));
+		$form->select('inviter_id', __('邀请人'))->options(User::selectOption())->help('选择用户');
+		$form->select('group_id', __('上级合伙人'))->options(User::selectOption(['level_id' => 2]))->help('选择用户');
+		$form->select('edu_id', __('联创'))->options(User::selectOption(['level_id' => 3]))->help('选择用户');
+
 		$form->text('nickname', __('昵称'));
 		$form->mobile('phone', __('手机'));
 
-		$form->text('headimgurl', __('头像'));
+		// $form->image('headimgurl', __('头像'))->disable();
 
 		$form->decimal('credit1', __('佣金'))->default(0.00);
 
@@ -133,7 +133,7 @@ class UserContorller extends AdminController {
 		$form->text('realname', __('真实姓名'));
 
 		// $form->switch('status', __('Status'))->default(1);
-		$form->text('invite_code', __('自定义邀请码'));
+		$form->text('invite_code', __('自定义邀请码'))->disable();
 
 		return $form;
 	}
