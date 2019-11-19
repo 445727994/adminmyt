@@ -52,7 +52,7 @@ return [
 		    |
 	*/
 
-	'url' => env('APP_URL', 'http://log.mn'),
+	'url' => env('APP_URL', 'http://guan.409net.com'),
 
 	'asset_url' => env('ASSET_URL', null),
 
