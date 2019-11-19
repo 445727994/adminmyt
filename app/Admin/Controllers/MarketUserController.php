@@ -26,7 +26,7 @@ class MarketUserController extends AdminController {
 
 		$grid->column('id', __('Id'));
 		$grid->column('name', __('昵称'));
-		$grid->column('head_img', __('头像'));
+		$grid->column('head_img', __('头像'))->image('', 50, 50);
 		$grid->column('created_at', __('创建时间'));
 		$grid->column('updated_at', __('更新时间'));
 		$grid->column('is_default', __('默认'));
