@@ -2,8 +2,11 @@
 /public/hot
 /public/storage
 /public/upload
+/config/admin.php
+/config/app.php
 /storage/*.key
 /vendor
+/.idea
 .env
 .env.backup
 *.log
