@@ -27,7 +27,13 @@ class MarketCate extends Model {
 	}
 	public static function selectOption($where = [], $add = '顶级分类') {
 		$res = MarketCate::where($where)->pluck('name', 'id')->toArray();
-		array_unshift($res, $add);
+		if ($add) {
+			$arr[0] = $add;
+			foreach ($res as $key => $value) {
+				$arr[$key] = $value;
+			}
+			$res = $arr;
+		}
 		return $res;
 	}
 	public function checkPid($value = '') {
