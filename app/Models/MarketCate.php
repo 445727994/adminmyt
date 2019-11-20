@@ -26,10 +26,8 @@ class MarketCate extends Model {
 		return $this->belongsTo(MarketCate::class, 'pid');
 	}
 	public static function selectOption($where = [], $add = '顶级分类') {
-		$res = MarketCate::where($where)->pluck('name', 'id');
-		if ($add != '') {
-			$res = array_merge(['0' => $add], json_decode(json_encode($res), true));
-		}
+		$res = MarketCate::where($where)->pluck('name', 'id')->toArray();
+		array_unshift($res, $add);
 		return $res;
 	}
 	public function checkPid($value = '') {

@@ -64,7 +64,7 @@ class User extends Model {
 		return $this->belongsTo(User::class, 'edu_id');
 	}
 	public static function selectOption($where = []) {
-		$res = User::where($where)->pluck('nickname', 'id');
+		$res = User::where($where)->pluck('nickname', 'id')->toArray();
 		return $res;
 	}
 }

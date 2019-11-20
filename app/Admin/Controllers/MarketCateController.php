@@ -75,8 +75,9 @@ class MarketCateController extends AdminController {
 		$form = new Form(new MarketCate);
 		$name = MarketCate::Name;
 		$form->text('name', __($name['name']));
+
 		$form->select('pid', __($name['pid']))->options(MarketCate::selectOption(['pid' => 0]))->help('顶级分类请勿修改上级分类')->rules('required', ['required' => '请选择分类']);
-		$form->radio('type', __($name['type']))->options(['0' => '后台获取', '1' => '接口获取'])->default('0');
+		//	$form->radio('type', __($name['type']))->options(['0' => '后台获取', '1' => '接口获取'])->default('0');
 		$form->number('sort', __($name['sort']));
 		$form->saving(function (Form $form) {
 			$pid = MarketCate::where('id', $form->model()->id)->value("pid");
