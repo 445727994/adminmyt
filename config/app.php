@@ -175,7 +175,8 @@ return [
 		App\Providers\EventServiceProvider::class,
 		App\Providers\RouteServiceProvider::class,
 		Ixudra\Curl\CurlServiceProvider::class,
-
+		//阿里
+		Jacobcyl\AliOSS\AliOssServiceProvider::class,
 	],
 
 	/*

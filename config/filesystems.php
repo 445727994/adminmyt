@@ -13,7 +13,7 @@ return [
 		    |
 	*/
 
-	'default' => env('FILESYSTEM_DRIVER', 'local'),
+	'default' => env('FILESYSTEM_DRIVER', 'oss'),
 
 	/*
 		    |--------------------------------------------------------------------------
@@ -37,7 +37,7 @@ return [
 		    | may even configure multiple disks of the same driver. Defaults have
 		    | been setup for each driver as an example of the required options.
 		    |
-		    | Supported Drivers: "local", "ftp", "sftp", "s3"
+		    | Supported Drivers: "local", "ftp", "s3", "rackspace"
 		    |
 	*/
 
@@ -50,26 +50,30 @@ return [
 
 		'public' => [
 			'driver' => 'local',
-			'root' => storage_path('app/public'),
-			'url' => env('APP_URL') . '/storage',
+			'root' => public_path('images/cache'),
+			'url' => env('APP_URL', 'https://api.409net.com'),
 			'visibility' => 'public',
 		],
 
 		's3' => [
 			'driver' => 's3',
-			'key' => env('AWS_ACCESS_KEY_ID'),
-			'secret' => env('AWS_SECRET_ACCESS_KEY'),
-			'region' => env('AWS_DEFAULT_REGION'),
+			'key' => env('AWS_KEY'),
+			'secret' => env('AWS_SECRET'),
+			'region' => env('AWS_REGION'),
 			'bucket' => env('AWS_BUCKET'),
-			'url' => env('AWS_URL'),
 		],
-		'admin' => [
-			'driver' => 'local',
-			'root' => public_path('upload'),
-			'visibility' => 'public',
-			'url' => env('APP_URL') . '/upload/',
+		'oss' => [
+			'driver' => 'oss',
+			'access_id' => 'LTAIypF1vruEo1ks',
+			'access_key' => 'iHDSCRMm9DLW6kfVSlCB9afXeYG5pz',
+			'bucket' => 'maiyatao',
+			'endpoint' => 'oss-cn-zhangjiakou.aliyuncs.com',
+//            'endpoint_internal' => '',
+			//            'cdnDomain' => '', // 如果isCName为true, getUrl会判断cdnDomain是否设定来决定返回的url，如果cdnDomain未设置，则使用endpoint来生成url，否则使用cdn
+			'isCName' => false,
+			'ssl' => false,
+			'debug' => true,
 		],
-
 	],
 
 ];
