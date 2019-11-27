@@ -22,7 +22,7 @@ class MarketsSchoolController extends AdminController {
 		$grid->model()->where('cate_pid', '=', 6);
 		$grid->column('id', __('Id'));
 		$grid->column('item_title', __('标题'));
-		$grid->column('images', __('封面图'))->image('', 100, 100);
+		$grid->column('image', __('封面图'))->image('', 100, 100);
 		$grid->column('shares', __('分享次数'));
 		//$grid->column('type', __('Type'));
 		$grid->column('cate.name', __('分类')); //
@@ -41,7 +41,7 @@ class MarketsSchoolController extends AdminController {
 		$show = new Show(Market::findOrFail($id));
 
 		$show->field('id', __('Id'));
-		$show->field('images', __('封面图'));
+		$show->field('image', __('封面图'));
 		$show->field('shares', __('分享次数'));
 		$show->field('created_at', __('创建时间'));
 		$show->field('updated_at', __('更新时间'));
@@ -59,7 +59,7 @@ class MarketsSchoolController extends AdminController {
 		$form = new Form(new Market);
 		//  $form->switch('type', __('Type'))->default(1);
 		$form->text("item_title", '标题');
-		$form->image('images', __('封面图'))->uniqueName(); //
+		$form->image('image', __('封面图'))->uniqueName(); //
 		$form->select('cate_id', __('分类'))->options(MarketCate::selectOption(['pid' => 6], false))->help('选择分类')->rules('required', ['required' => '请选择分类']);
 		$form->text('url', __('https网址'));
 		$form->text('content', __('描述'))->help("内容简介！");

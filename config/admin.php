@@ -292,9 +292,9 @@ return [
 		    |
 		    | Supported: "fixed", "layout-boxed", "layout-top-nav", "sidebar-collapse",
 		    | "sidebar-mini".
-		    |
+		    |, 'sidebar-collapse'
 	*/
-	'layout' => ['sidebar-mini', 'sidebar-collapse'],
+	'layout' => ['sidebar-mini'],
 
 	/*
 		    |--------------------------------------------------------------------------
