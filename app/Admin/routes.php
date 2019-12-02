@@ -22,4 +22,6 @@ Route::group([
 	$router->resource('levels', LevelContorller::class);
 	$router->resource('logs', LogContorller::class);
 	$router->resource('users', UserContorller::class);
+	$router->resource('shop-goods', ShopGoodsController::class);
+	$router->resource('shop-categories', ShopCateController::class);
 });

@@ -15,7 +15,6 @@ class LogContorller extends AdminController {
 	 * @var string
 	 */
 	protected $title = 'App\models\Log';
-
 	/**
 	 * Make a grid builder.
 	 *

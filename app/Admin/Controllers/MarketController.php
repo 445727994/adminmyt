@@ -106,7 +106,7 @@ class MarketController extends AdminController {
 		$form->hidden('cate_pid')->default(1);
 		$form->saving(function (Form $form) {
 			$Taobao = new Taobao();
-			$item = $Taobao->getItemInfo(['item_id' => '559419631599']);
+			$item = $Taobao->getItemInfo(['item_id' => $form->item_id]);
 			if ($item == NULL) {
 				$error = new MessageBag([
 					'title' => '获取错误',
