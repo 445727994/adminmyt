@@ -47,6 +47,7 @@ class OrderController extends AdminController {
 		// $grid->column('type', __('Type'));
 		$grid->column('status', __('状态'))->using(['0' => '未支付', '1' => '已支付', '3' => '已发货', '4' => '已确认']);
 		$grid->column('remark', __('备注'));
+		$grid->column('express_num', __('快递单号'));
 		// $grid->column('close_reason', __('Close reason'));
 		$grid->column('pay_time', __('支付时间'));
 		// $grid->column('cancel_time', __('Cancel time'));
@@ -92,6 +93,7 @@ class OrderController extends AdminController {
 		$show->field('remark', __('备注'));
 		// $show->field('close_reason', __('Close reason'));
 		$show->field('pay_time', __('支付时间'));
+		$show->field('express_num', __('快递单号'));
 		// $show->field('cancel_time', __('Cancel time'));
 		$show->field('created_at', __('创建时间'));
 		$show->field('updated_at', __('更新时间'));
@@ -131,11 +133,11 @@ class OrderController extends AdminController {
 		// $form->switch('type', __('Type'));
 		$form->radio('status', __('状态'))->options(['0' => '未支付', '1' => '已支付', '3' => '已发货', '4' => '已确认']);
 		$form->textarea('remark', __('备注'));
+		$form->text('express_num', __('快递单号'));
 		// $form->text('close_reason', __('Close reason'));
 		$form->datetime('pay_time', __('支付时间'))->default(date('Y-m-d H:i:s'));
 		// $form->datetime('cancel_time', __('Cancel time'))->default(date('Y-m-d H:i:s'));
 		// $form->number('is_calculate', __('Is calculate'));
-
 		return $form;
 	}
 }
